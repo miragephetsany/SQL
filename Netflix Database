@@ -133,6 +133,7 @@ WHERE titles.title='The Starling'
 ;
 
 ______
+
 --Question 5: What is the oldest movie in the database and what year was it made?
 --This SQL presents the title of the movie along with the release year of the movie. I have limited this by 1 to keep it short and clean versus reviewing several movies down the list. 
 However, if we take the LIMIT 1 line away, it will then show a list of movies rather than one.
