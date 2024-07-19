@@ -60,7 +60,7 @@ VALUES
 
 
 
---How many movie titles are there in the database? (movies only, not tv shows)
+--Question 1: How many movie titles are there in the database? (movies only, not tv shows)
 --There are 8 movies in the database. This is because in my SQL query, I inserted the WHERE statement to be specific with my findings if you want to see the full list of movies, directors, and type.
 
 SELECT people.show_id
@@ -80,4 +80,16 @@ WHERE type = 'Movie'
 ;
 
 
+--Question 2: When was the most recent batch of tv shows and/or movies added to the database?
+--THe most recent batch of tv shows and/or movies was added on September 25th, 2021 at 00:00:00. Though the question doesn't ask the specific time, I decided to give both answers in case.
 
+--This first SQL code shows the most (max) recent batch of tv shows/movies in the data base, which includes both the date and time.
+
+SELECT max(date_added)
+FROM "netflix_titles_info"
+;
+
+--This second SQL code also shows the most (max) recent batch of tv shows/movies in te data base; however, this just shows the date instead of the time.
+select max(date(date_added))
+FROM "netflix_titles_info"
+;
