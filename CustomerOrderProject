@@ -131,7 +131,6 @@ AND length(orderID)=6
 AND orderid <> 'Order ID'
 ;
 
-
 --The average amount spent for these customers is $13.828 (rounded).
 --There are 278 customers who ordered 2 products at a time in February.
 --Distinct is in code to avoid duplicates.
