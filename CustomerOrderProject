@@ -1,4 +1,7 @@
---Q1: How many orders were placed in January?
+#This is my first project under the SQL Bootcamp for my BreakIntoTech certification.
+#I have queried multiple tables to determine the statistics for customer and order data.
+
+#Q1: How many orders were placed in January?
 
 SELECT COUNT(orderid)
 FROM BIT_DB.JanSales
@@ -6,11 +9,11 @@ WHERE length(orderid)=6
 AND orderid <> 'Order ID'
 ;
 
---There were 9681 orders placed in January.
+#There were 9681 orders placed in January.
 
-----
+##
 
---Q2: How many of those orders were an iPhone?
+#Q2: How many of those orders were an iPhone?
 
 SELECT COUNT(orderid)
 FROM BIT_DB.JanSales
@@ -19,11 +22,11 @@ AND length(orderid)=6
 AND orderid <> 'Order ID'
 ;
 
---There are 379 orders made for an iPhone.
+#There are 379 orders made for an iPhone.
 
-----
+##
 
-Q3: Select the customer account numbers for all the orders that were placed in February.
+#Q3: Select the customer account numbers for all the orders that were placed in February.
 
 SELECT distinct 
 customers.acctnum
@@ -34,11 +37,11 @@ WHERE length(orderid)=6
 AND orderid <> 'Order ID'
 ;
 
---In order to find my results all the orders placed for all of the customer account numbers, I needed to JOIN the tables.
+#In order to find my results all the orders placed for all of the customer account numbers, I needed to JOIN the tables.
 
-----
+##
 
-Q4: Which product was the cheapest one sold in January, and what was the price?
+#Q4: Which product was the cheapest one sold in January, and what was the price?
 
 SELECT distinct product, MIN(price) price
 FROM BIT_DB.JanSales Jan
@@ -48,18 +51,12 @@ SELECT distinct product, price
 FROM BIT_DB.JanSales
 ORDER BY price ASC LIMIT 1;
 
---The cheapest product is the AAA Batteries (4-pack) that are $2.99. 
---I inserted 2 queries. I did this to show that although both may be answered in separate ways, it gives the same result. The difference in code is that the second query simply only wants to display 1 ansewr only in ascending order from the columns provided.
+#The cheapest product is the AAA Batteries (4-pack) that are $2.99. 
+#I inserted 2 queries. I did this to show that although both may be answered in separate ways, it gives the same result. The difference in code is that the second query simply only wants to display 1 ansewr only in ascending order from the columns provided.
 
-----
+##
 
-Q5: What is the total revenue for each product sold in January?
-
-SELECT SUM(quantity)*price Revenue
-,product
-FROM BIT_DB.JanSales
-GROUP BY product
-;
+#Q5: What is the total revenue for each product sold in January?
 
 SELECT SUM(quantity)*price Revenue
 ,product
@@ -67,33 +64,39 @@ FROM BIT_DB.JanSales
 GROUP BY product
 ;
 
---The revenue for each item sold are as follows:
---20in Monitor: 23647.85
---27in 4k Gaming Monitor: 121676.88
---27in FHD Monitor: 62845.810000000005
---34in Ultrawide Monitor: 119316.86
---AA Batteries (4-pack): 5472
---AAA Batteries (4-pack): 4772.04
---Apple Airpods Headphones: 122100
---Bose SoundSport Headphones: 65893.41
---Flatscreen TV: 72900
---Google Phone: 190800
---LG Dryer: 23400
---LG Washing Machine: 25200
---Lightning Charging Cable: 17207.45
---Macbook Pro Laptop: 399500
-ThinkPad Laptop: 216997.83000000002
---USB-C Charging Cable: 15343.8
---Vareebadd Phone: 50000
---Wired Headphones: 12961.19
---iPhone: 165300
+SELECT SUM(quantity)*price Revenue
+,product
+FROM BIT_DB.JanSales
+GROUP BY product
+;
 
-----
+#The revenue for each item sold are as follows:
+#20in Monitor: 23647.85
+#27in 4k Gaming Monitor: 121676.88
+#27in FHD Monitor: 62845.810000000005
+#34in Ultrawide Monitor: 119316.86
+#AA Batteries (4-pack): 5472
+#AAA Batteries (4-pack): 4772.04
+#Apple Airpods Headphones: 122100
+#Bose SoundSport Headphones: 65893.41
+#Flatscreen TV: 72900
+#Google Phone: 190800
+#LG Dryer: 23400
+#LG Washing Machine: 25200
+#Lightning Charging Cable: 17207.45
+#Macbook Pro Laptop: 399500
+#ThinkPad Laptop: 216997.83000000002
+#USB-C Charging Cable: 15343.8
+#Vareebadd Phone: 50000
+#Wired Headphones: 12961.19
+#iPhone: 165300
 
---Q6: Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
+##
 
---This first query shows a standard layout of the quantity of the products sold, the individual product price, and location/address where the product was sold.
---Query 2 below Query 1.
+#Q6: Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
+
+#This first query shows a standard layout of the quantity of the products sold, the individual product price, and location/address where the product was sold.
+#Query 2 below Query 1.
 
 SELECT quantity
 ,price
@@ -103,9 +106,9 @@ FROM BIT_DB.FebSales
 WHERE location='548 Lincoln St, Seattle, WA 98101'
 ;
 
---Q2 (below) shows the quantity of the product multiplied by the price of the product (price from above), making the total $7.68 (3.84x2).
---I removed the location column to keep the query more clean in appearance.
---Also added the WHERE statement to specify what we are originally looking for to provide us our results.
+#Q2 (below) shows the quantity of the product multiplied by the price of the product (price from above), making the total $7.68 (3.84x2).
+#I removed the location column to keep the query more clean in appearance.
+#Also added the WHERE statement to specify what we are originally looking for to provide us our results.
 
 SELECT SUM(Quantity)
 ,product
@@ -115,11 +118,11 @@ WHERE location='548 Lincoln St, Seattle, WA 98101'
 GROUP BY product
 ;
 
---The product(s) sold in February at 548 Lincoln St in Seattle is 2 AA Batteries making the total revenue $7.68.
+#The product(s) sold in February at 548 Lincoln St in Seattle is 2 AA Batteries making the total revenue $7.68.
 
-----
+##
 
---Q7: How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
+#Q7: How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
 
 SELECT COUNT(distinct customers.acctnum) Customers
 ,AVG(Quantity*price)
@@ -131,13 +134,12 @@ AND length(orderID)=6
 AND orderid <> 'Order ID'
 ;
 
---The average amount spent for these customers is $13.828 (rounded).
---There are 278 customers who ordered 2 products at a time in February.
---Distinct is in code to avoid duplicates.
---I multipled quantity and price ro get an average result for the question needed.
---I had to left join in my query so I could receive all data needed from first column/table, which is the acctnum.
---The WHERE statement species exactly a minimum quantity of 2 a customer has ordered.
---the Length and <> statement is added to avoid unnecessary space and extra characters.
-
+#The average amount spent for these customers is $13.828 (rounded).
+#There are 278 customers who ordered 2 products at a time in February.
+#Distinct is in code to avoid duplicates.
+#I multipled quantity and price ro get an average result for the question needed.
+#I had to left join in my query so I could receive all data needed from first column/table, which is the acctnum.
+#The WHERE statement species exactly a minimum quantity of 2 a customer has ordered.
+#The Length and <> statement is added to avoid unnecessary space and extra characters.
 
 
