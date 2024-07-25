@@ -1,5 +1,5 @@
-#This is my first project under the SQL Bootcamp for my BreakIntoTech certification.
-#I have queried multiple tables to determine the statistics for customer and order data.
+--This is my first project under the SQL Bootcamp for my BreakIntoTech certification.
+--I have queried multiple tables to determine the statistics for customer and order data.
 
 #Q1: How many orders were placed in January?
 
@@ -11,7 +11,7 @@ AND orderid <> 'Order ID'
 
 #There were 9681 orders placed in January.
 
-##
+----
 
 #Q2: How many of those orders were an iPhone?
 
@@ -24,7 +24,7 @@ AND orderid <> 'Order ID'
 
 #There are 379 orders made for an iPhone.
 
-##
+----
 
 #Q3: Select the customer account numbers for all the orders that were placed in February.
 
@@ -39,7 +39,7 @@ AND orderid <> 'Order ID'
 
 #In order to find my results all the orders placed for all of the customer account numbers, I needed to JOIN the tables.
 
-##
+----
 
 #Q4: Which product was the cheapest one sold in January, and what was the price?
 
@@ -54,7 +54,7 @@ ORDER BY price ASC LIMIT 1;
 #The cheapest product is the AAA Batteries (4-pack) that are $2.99. 
 #I inserted 2 queries. I did this to show that although both may be answered in separate ways, it gives the same result. The difference in code is that the second query simply only wants to display 1 ansewr only in ascending order from the columns provided.
 
-##
+----
 
 #Q5: What is the total revenue for each product sold in January?
 
@@ -91,7 +91,7 @@ GROUP BY product
 #Wired Headphones: 12961.19
 #iPhone: 165300
 
-##
+----
 
 #Q6: Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
 
@@ -120,7 +120,7 @@ GROUP BY product
 
 #The product(s) sold in February at 548 Lincoln St in Seattle is 2 AA Batteries making the total revenue $7.68.
 
-##
+----
 
 #Q7: How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
 
