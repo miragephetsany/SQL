@@ -142,6 +142,8 @@ AND orderid <> 'Order ID'
 #The WHERE statement species exactly a minimum quantity of 2 a customer has ordered.
 #The Length and <> statement is added to avoid unnecessary space and extra characters.
 
+----
+
 #Q8: List all the products sold in Los Angeles in February, and include how many of each were sold.
 
 SELECT Product, SUM(quantity)
