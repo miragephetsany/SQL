@@ -142,4 +142,14 @@ AND orderid <> 'Order ID'
 #The WHERE statement species exactly a minimum quantity of 2 a customer has ordered.
 #The Length and <> statement is added to avoid unnecessary space and extra characters.
 
+#Q8: List all the products sold in Los Angeles in February, and include how many of each were sold.
 
+SELECT Product, SUM(quantity)
+FROM BIT_DB.FebSales
+WHERE location LIKE '%Los Angeles%'
+GROUP BY product
+;
+
+#We are looking for all products sold, which means we'll need to find the total/sum.
+#The % before and after Los Angeles means any characters before and after it, but still breaking the search to the specific city making the result easier to send back.
+#The GROUP BY is telling SQL we want to group and lay out all the product results that is sent back.
