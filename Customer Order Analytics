@@ -155,3 +155,82 @@ GROUP BY product
 #We are looking for all products sold, which means we'll need to find the total/sum.
 #The % before and after Los Angeles means any characters before and after it, but still breaking the search down to the specific city making the result easier and cleaner.
 #The GROUP BY is telling SQL we want to group and lay out all of the product results that is sent back.
+
+----
+
+--Additional questions added:
+
+#1. Which locations in New York received at least 3 orders in January, 
+and how many orders did they each receive?
+
+SELECT distinct location, count(orderID)
+FROM BIT_DB.JanSales
+WHERE location like '%NY%'
+AND length(orderID)= 6
+AND orderID <> 'Order ID'
+GROUP BY location
+HAVING count(orderID)>2
+;
+
+#The locations in New York that received at least 3 orders in January on Jefferson St, Pine St, Lincoln St, and Elm St.
+#Jefferson St: 4, Pine St: 3, Lincoln St: 3, Elm St: 3
+
+----
+
+#2. How many of each type of headphones were sold in February?
+
+SELECT sum(Quantity) Quantity, Product
+FROM BIT_DB.FebSales
+WHERE Product like '%Headphones%'
+GROUP BY Product
+;
+
+#1,282 Wired Headphoens were sold in February.
+#1,013 Apple Airpods Headphones were sold in February.
+#844 Bose SoundSport Headphones were sold in February.
+
+----
+
+#3. What was the average amount spent per account in February?
+
+SELECT AVG(price*Quantity)
+FROM BIT_DB.FebSales Feb
+LEFT JOIN BIT_DB.customers customers
+ON Feb.orderID=customers.order_id
+WHERE length(orderID) = 6
+AND orderID <> 'Order ID'
+;
+
+#The average amount spent per account in February is 190.00034676304287.
+
+----
+
+#4. What was the average quantity of products purchased per account in February? 
+
+SELECT SUM(Quantity)/count(cust.acctnum) 
+FROM BIT_DB.FebSales Feb
+LEFT JOIN BIT_DB.customers cust
+ON Feb.orderID=cust.order_id
+WHERE length(orderID) = 6
+AND orderID <> 'Order ID'
+;
+
+#The average quantity or products purchased per account in February is 1.
+
+----
+
+#5. Which product brought in the most revenue in January and how much revenue did it bring in total?
+
+SELECT Product
+,SUM(Quantity*price)
+FROM BIT_DB.JanSales
+GROUP BY Product
+ORDER BY SUM(Quantity*price) desc
+LIMIT 1
+;
+
+#The Macbook Pro Laptop brought in the most revnue in January.
+#The total revenue this product brought in is #399,500.
+
+
+
