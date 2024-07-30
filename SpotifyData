@@ -1,0 +1,93 @@
+#For this project, I downloaded Spotify data given from my program to use in my own real-world problems.
+#I inserted this data .csv into the table in SQLite.
+#I have provided my own questions and answered them as what my clients or the audience may be asking.
+
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+song_key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+song_mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness decimal(8,7) NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL )
+
+----
+
+#Who are the top 5 most popular musicians and their songs?
+
+SELECT artist_name
+,track_name
+,popularity
+FROM BIT_DB.Spotifydata
+ORDER BY popularity desc LIMIT 5
+;
+
+#The top 5 popular songs by each musician are: 
+#1. Good 4 U by Olivia Rodrigo
+#2. Bad Habits by Ed Sheeran
+#3. Heat Waves by Glass Animals
+#4. Yonaguni by Bad Bunny
+#5. Blinding Lights by The Weeknd
+
+----
+
+#Which songs by which musicians used greater than .50 acoustic sounds?
+
+SELECT artist_name
+,track_name
+,acousticness
+FROM BIT_DB.Spotifydata
+ORDER BY acousticness > .5 desc
+LIMIT 10
+;
+
+#The songs that used .50 greater acousticness are:
+#Drivers License, Good 4 U, Traitor, and Deja Vu by Olivia Rodrigo
+#Heartbreak Anniversary by Giveon
+#Someone You Loved by Lewis Capaldi
+#Arcade by Duncan Laurence
+#You Broke Me First by Tate McRae
+#MONTERO (Call Me By Your Name) by Lil Nas X
+#STAY (with Justin Bieber) by The Kid LAROI
+
+----
+
+#What is Olivia Rodrigo's highest danceable song?
+
+SELECT artist_name
+,track_name
+,danceability
+FROM BIT_DB.Spotifydata
+WHERE artist_name = 'Olivia Rodrigo' 
+LIMIT 1
+;
+
+#Olivia Rodrigo's highest/most danceable song is Driver's License.
+
+----
+
+#What are the top 3 songs that have the lowest popularity amongst danceability?
+
+SELECT track_name
+,popularity
+,danceability
+FROM BIT_DB.Spotifydata
+ORDER BY popularity asc LIMIT 3
+;
+
+#The top 3 songs in lowest popularity amongst danceability are:
+#1. Dynmamite
+#2. Todo De Ti
+#3. Butter
+
