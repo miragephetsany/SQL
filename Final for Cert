@@ -1,0 +1,19 @@
+#These are my answers to a few questions I've made for my final project.
+
+-- Query 1: Show Customers (their full names, customer ID, and country) who are not in the US.
+
+SELECT FirstName, LastName, CustomerId, Country
+FROM chinook.customers
+WHERE Country != "USA"
+;
+
+-- Query 2: Which two artists from our data have a rock influence genre?
+
+SELECT genres.Name AS GenreName
+,artists.Name AS ArtistName
+FROM chinook.genres
+JOIN chinook.artists
+ON genres.GenreID = artists.ArtistID
+WHERE GenreName LIKE '%Rock%'
+;
+
