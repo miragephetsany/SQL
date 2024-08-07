@@ -17,3 +17,13 @@ ON genres.GenreID = artists.ArtistID
 WHERE GenreName LIKE '%Rock%'
 ;
 
+-- Query 3: Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+
+SELECT empl.LastName,
+empl.FirstName,
+Invoices.InvoiceId
+FROM chinook.employees empl
+JOIN chinook.customers cust
+ON empl.EmployeeID = cust.SupportRepId
+JOIN chinook.invoices Invoices
+ON Invoices.CustomerId = cust.CustomerId;
