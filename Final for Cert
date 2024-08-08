@@ -27,3 +27,10 @@ JOIN chinook.customers cust
 ON empl.EmployeeID = cust.SupportRepId
 JOIN chinook.invoices Invoices
 ON Invoices.CustomerId = cust.CustomerId;
+
+-- Query 4: What are the total sales for 2009?
+
+SELECT SUM(Total)
+FROM chinook.invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31'
+;
