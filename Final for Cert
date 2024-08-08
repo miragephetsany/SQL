@@ -34,3 +34,21 @@ SELECT SUM(Total)
 FROM chinook.invoices
 WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31'
 ;
+
+-- Query 5: Which employees were hired in October 2002? What are their job titles?
+
+SELECT FirstName
+,LastName
+,HireDate
+,Title
+FROM chinook.employees
+WHERE HireDate LIKE "%10%"
+
+-- Query 6: How many customers work at Apple? What is the customer's first name, last name, and state location?
+
+SELECT FirstName
+,LastName
+,State
+,Company
+FROM chinook.customers
+WHERE Company LIKE 'Apple%';
