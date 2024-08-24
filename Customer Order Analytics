@@ -1,4 +1,4 @@
---This is my first project under the SQL Bootcamp for my BreakIntoTech certification.
+--This is my first project under the SQL Bootcamp for my Break Into Tech certification.
 --I have queried multiple tables to determine the statistics for customer and order data.
 
 #Q1: How many orders were placed in January?
@@ -37,7 +37,7 @@ WHERE length(orderid)=6
 AND orderid <> 'Order ID'
 ;
 
-#In order to find my results all the orders placed for all of the customer account numbers, I needed to JOIN the tables.
+#In order to find my results for all of the orders placed for all of the customer account numbers, I needed to JOIN the tables.
 
 ----
 
@@ -52,7 +52,8 @@ FROM BIT_DB.JanSales
 ORDER BY price ASC LIMIT 1;
 
 #The cheapest product is the AAA Batteries (4-pack) that are $2.99. 
-#I inserted 2 queries. I did this to show that although both may be answered in separate ways, it gives the same result. The difference in code is that the second query simply only wants to display 1 ansewr only in ascending order from the columns provided.
+#I inserted 2 queries. I did this to show that although both may be answered in separate ways, it gives the same result. 
+#The difference in code is that the second query simply only wants to display 1 answer only in ascending order from the columns provided.
 
 ----
 
@@ -61,12 +62,9 @@ ORDER BY price ASC LIMIT 1;
 SELECT SUM(quantity)*price Revenue
 ,product
 FROM BIT_DB.JanSales
-GROUP BY product
-;
-
-SELECT SUM(quantity)*price Revenue
-,product
-FROM BIT_DB.JanSales
+WHERE product IS NOT NULL
+AND product <> ''
+AND quantity > 0
 GROUP BY product
 ;
 
@@ -93,7 +91,7 @@ GROUP BY product
 
 ----
 
-#Q6: Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
+#Q6: Which products were sold on February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
 
 #This first query shows a standard layout of the quantity of the products sold, the individual product price, and location/address where the product was sold.
 #Query 2 below Query 1.
